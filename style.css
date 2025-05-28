@@ -8,7 +8,10 @@
   padding: 0;
 }
 
-  @keyframes fadeUp {
+/* ---------------------------
+   공통 애니메이션
+---------------------------- */
+@keyframes fadeUp {
   0% {
     opacity: 0;
     transform: translateY(30px);
@@ -18,30 +21,37 @@
     transform: translateY(0);
   }
 }
+
+/* ---------------------------
+   Hero 텍스트
+---------------------------- */
 .hero-text {
   font-family: 'Shilla_Culture(B)', cursive;
   color: #ffffff;
   animation: fadeUp 2s ease-out forwards;
   animation-delay: 1s;
-  opacity: 0; /* 초기값 설정 */
-    font-size: 2.2rem;
+  opacity: 0;
+  font-size: 2.2rem;
   text-align: center;
   word-break: keep-all; /* ✅ 단어 중간 줄바꿈 방지 */
 }
+
 .hero-subtext {
   animation: fadeUp 2s ease-out forwards;
   animation-delay: 1.8s;
   opacity: 0;
 }
 
-
+/* ---------------------------
+   헤더 (Top Bar)
+---------------------------- */
 .top-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.267); /* 투명 검정 */
+  background-color: rgba(0, 0, 0, 0.267);
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -76,7 +86,27 @@
   white-space: nowrap;
 }
 
-/* 모바일 반응형 */
+/* ---------------------------
+   빠른문의 버튼 스타일
+---------------------------- */
+.quick-call {
+  background-color: #002B45;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.quick-call:hover {
+  background-color: #004066;
+}
+
+/* ---------------------------
+   모바일 반응형
+---------------------------- */
 @media (max-width: 768px) {
   .top-bar {
     flex-direction: column;
@@ -94,31 +124,18 @@
     justify-content: center;
   }
 
-.menu a {
-  white-space: nowrap; /* ✅ 줄바꿈 방지 */
-  font-size: 0.95rem;   /* ✅ 모바일에서 약간 작게 조정 */
-  
-}
-  .info-block h3 {
-  font-size: 1.5rem; /* ✅ 사이즈 조정 */
-  color: #002B45;
-  margin-bottom: 1rem;
-}
-.quick-call {
-  background-color: #002B45;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 0.95rem;
-  transition: background-color 0.3s ease;
-}
+  .menu a {
+    white-space: nowrap;
+    font-size: 0.95rem;
+  }
 
-.quick-call:hover {
-  background-color: #004066;
-}
   .hero-text {
-    font-size: 1.5rem; /* ✅ 모바일용 글자 크기 축소 */
+    font-size: 1.5rem;
+  }
+
+  .info-block h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #002B45;
   }
 }
