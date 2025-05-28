@@ -111,24 +111,36 @@
   .top-bar {
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 14px 10px;
     text-align: center;
   }
 
-  .top-bar .top-left,
-  .top-bar .top-center,
-  .top-bar .top-right {
+  .top-left,
+  .top-center,
+  .top-right {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .menu a {
-    white-space: nowrap;
-    font-size: 0.95rem;
+  .menu {
+    flex-wrap: wrap; /* ✅ 메뉴 줄바꿈 허용 */
+    justify-content: center;
+    gap: 10px;
+    padding: 0 10px;
+    overflow-x: auto; /* ✅ 넘칠 경우 가로 스크롤 허용 */
   }
 
+  .menu a {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+
+  .contact-number {
+    font-size: 0.9rem;
+  }
   .hero-text {
     font-size: 1.5rem;
   }
