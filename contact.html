@@ -128,20 +128,26 @@
   <h2 class="headline">예약/문의</h2>
 
   <section class="form-wrapper">
-    <form onsubmit="handleSubmit(event)">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <!-- ✅ Netlify 인식용 숨김 필드 추가 -->
+<input type="hidden" name="form-name" value="contact" />
+<p hidden>
+  <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+</p>
+
       <div>
         <label for="name">이름</label>
-        <input type="text" id="name" required />
+        <input type="text" id="name" name="name" required />
       </div>
 
       <div>
         <label for="phone">전화번호</label>
-        <input type="tel" id="phone" required />
+        <input type="tel" id="phone" name="phone" required />
       </div>
 
       <div>
         <label for="unit">관심 평형</label>
-        <select id="unit" required>
+        <select id="unit" name="unit" required>
           <option value="">선택해주세요</option>
           <option value="54A">54A</option>
           <option value="54B">54B</option>
@@ -161,11 +167,11 @@
       <div>
         <label for="message">문의내용</label>
         
-        <textarea id="message" required></textarea>
+        <textarea id="message" name="message" required></textarea>
       </div>
       <div class="agree-check">
   <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
-  <input type="checkbox" id="agree" />
+  <input type="checkbox" id="agree" name="agree" />
 </div>
 
 
