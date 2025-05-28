@@ -79,7 +79,7 @@
     }
     .hero-text {
       font-family: 'Shilla_Culture(B)', cursive;
-      font-size: 2.5rem;
+      font-size: 4rem;
       font-weight: bold;
       line-height: 1.6;
       color: #ffffff !important;
@@ -92,14 +92,25 @@
       margin-top: 1rem;
       color: #ffffff;
     }
-    @media (min-width: 768px) {
-      .hero-text {
-        font-size: 5rem;
+      .menu a {
+    white-space: nowrap;
+    font-size: 0.95rem;
+  }
+
+  .hero-text {
+    word-break: keep-all;
+  }
+
+  @media (max-width: 768px) {
+    .hero-text {
+      font-size: 2rem;
+    }
+
       }
       .hero-subtext {
         font-size: 1.5rem;
       }
-    }
+    
      .top-bar {
       position: fixed;
       top: 0;
