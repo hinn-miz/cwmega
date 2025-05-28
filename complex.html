@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단지배치도 - 창원 메가시티 자이&위브</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .headline {
+      margin-top: 100px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #002B45;
+    }
+
+    @media (max-width: 768px) {
+      .headline {
+        margin-top: 120px;
+        font-size: 1.5rem;
+      }
+    }
+
+    .info-block {
+      max-width: 1000px;
+      margin: 3rem auto;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .info-block h3 {
+      font-size: 1.5rem;
+      color: #002B45;
+      margin-bottom: 1rem;
+    }
+
+    .info-block img {
+      width: 100%;
+      height: auto;
+    }
+    @keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.3s ease-out, transform 1.3s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  </style>
+</head>
+<body style="padding-top: 80px;"> <!-- ✅ 헤더와 겹치지 않도록 상단 여백 추가 -->
+  <header class="top-bar">
+    <div class="top-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo_big.png" alt="로고" class="logo" />
+      </a>
+    </div>
+    <nav class="top-center menu">
+      <a href="business.html">사업안내</a>
+      <a href="complex.html">단지안내</a>
+      <a href="units.html">평형정보</a>
+      <a href="location.html">오시는길</a>
+      <a href="contact.html">예약/문의</a>
+    </nav>
+    <div class="top-right contact-number">
+  <a href="tel:01049049612" class="quick-call">빠른문의 010-4904-9612</a>
+</div>
+
+  </header>
+
+  <h2 class="headline">단지배치도</h2>
+
+<section class="info-block">
+<img src="images/complex.jpg" alt="단지 이미지" class="reveal">
+</section>
+
+<section class="info-block">
+    <h3>동호수 배치도</h3>
+   <img src="images/dh.jpg" alt="동호수 배치도" class="reveal">
+  </section>
+
+  <section class="info-block">
+    <h3>커뮤니티 시설</h3>
+    <img src="images/community.jpg" alt="커뮤니티 시설" class="reveal">
+  </section>
+
+  <footer class="site-footer" style="background-color: #000; color: #fff; position: relative;">
+    <div class="footer-left" style="padding: 2rem 1rem;">
+      시행사: 대야구역 재개발정비사업조합<br>
+      시공사: <img src="images/const.png" alt="시공사 로고" style="height: 30px; vertical-align: bottom;"> <br>
+      온라인 마케팅 대행 : 미쯔씨앤에이<br>
+      <p class="footer-note" style="color: #aaa; font-size: 0.85rem; margin-top: 1rem;">
+        ※ 본 홈페이지의 CG, 이미지컷은 소비자의 이해를 돕기 위해 제작된 것으로 실제와 다소 차이가 있을 수 있습니다.<br>
+        ※ 본 홈페이지의 명시된 개발계획은 관계기관 혹은 지자체의 사정에 의해 변경 또는 취소될 수 있습니다.<br><br>
+        © 본페이지 콘텐츠의 무단 복제 및 재배포를 금지합니다.
+      </p>
+    </div>
+    <div class="footer-right">
+      <button class="top-button" onclick="scrollToTop()" style="
+        position: fixed;
+        right: 20px;
+        bottom: 40px;
+        background: #fff;
+        color: #002B45;
+        border: 2px solid #002B45;
+        border-radius: 12px;
+        width: 45px;
+        height: 45px;
+        font-weight: bold;
+        font-size: 0.85rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        cursor: pointer;
+      ">⬆<br><span style="font-size: 0.75rem;">TOP</span></button>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // 스크롤 시 이미지 애니메이션
+const revealEls = document.querySelectorAll('.reveal');
+function handleReveal() {
+  revealEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', handleReveal);
+window.addEventListener('load', handleReveal);
+
+  </script>
+</body>
+</html>
