@@ -128,7 +128,8 @@
   <h2 class="headline">예약/문의</h2>
 
   <section class="form-wrapper">
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return checkAgreement()">
+
         <!-- ✅ Netlify 인식용 숨김 필드 추가 -->
 <input type="hidden" name="form-name" value="contact" />
 <p hidden>
@@ -171,7 +172,7 @@
       </div>
       <div class="agree-check">
   <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
-  <input type="checkbox" id="agree" name="agree" />
+  <input type="checkbox" id="agree" /> <!-- ✅ name 제거 -->
 </div>
 
 
@@ -212,21 +213,20 @@
   </footer>
 
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function handleSubmit(event) {
-  event.preventDefault();
-  const agree = document.getElementById("agree");
-  if (!agree.checked) {
-    alert("개인정보 수집 및 이용에 동의해 주세요.");
-    return;
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  alert("정상적으로 접수되었습니다. 최대한 빠르게 연락드리겠습니다.");
-}
 
-    
-  </script>
+  function checkAgreement() {
+    const agree = document.getElementById("agree");
+    if (!agree.checked) {
+      alert("개인정보 수집 및 이용에 동의해 주세요.");
+      return false; // 제출 차단
+    }
+    // 동의했으면 제출 허용
+    return true;
+  }
+</script>
+
 </body>
 </html>
