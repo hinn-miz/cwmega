@@ -42,6 +42,58 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="header.css" />
   <style>
+    .popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  text-align: center;
+  max-width: 90%;
+  width: 400px;
+  animation: popupFade 0.3s ease-out;
+}
+
+.popup-box img.popup-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.popup-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+@keyframes popupFade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
     @font-face {
       font-family: 'Shilla_Culture(B)';
       src: url('fonts/Shilla_Culture(B).ttf') format('truetype');
@@ -230,8 +282,56 @@
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+function closePopup(popupId, cookieName) {
+  const checkbox = document.querySelector(`#${popupId} input[type="checkbox"]`);
+  if (checkbox && checkbox.checked) {
+    const expiry = new Date();
+    expiry.setDate(expiry.getDate() + 1);
+    document.cookie = `${cookieName}=true; path=/; expires=${expiry.toUTCString()}`;
+  }
+  document.getElementById(popupId).style.display = "none";
+}
+
+function checkPopupCookie(popupId, cookieName) {
+  if (!document.cookie.includes(`${cookieName}=true`)) {
+    document.getElementById(popupId).style.display = "flex";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  checkPopupCookie("popupModal", "hidePopup");
+  checkPopupCookie("popupModal2", "hidePopup2"); // ✅ 두 번째 팝업도 체크
+});
 </script>
 
+<!-- ✅ 이미지 팝업 모달 -->
+<div class="popup-overlay" id="popupModal" style="display: none;">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popupModal', 'hidePopup')">✕</button>
+    <img src="images/popup-banner.jpg" alt="팝업 이미지" class="popup-image">
+    <div class="popup-actions">
+      <label>
+        <input type="checkbox" id="hideToday" /> 오늘 하루 보지 않기
+      </label>
+      <button onclick="closePopup('popupModal', 'hidePopup')">닫기</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ✅ 두 번째 팝업 모달 -->
+<div class="popup-overlay" id="popupModal2" style="display: none;">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup('popupModal2', 'hidePopup')">✕</button>
+    <img src="images/popup-banner2.jpg" alt="팝업 이미지2" class="popup-image">
+    <div class="popup-actions">
+      <label>
+        <input type="checkbox" id="hideToday2" /> 오늘 하루 보지 않기
+      </label>
+      <button onclick="closePopup('popupModal2', 'hidePopup')">닫기</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
