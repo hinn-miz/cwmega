@@ -6,6 +6,20 @@
   <title>오시는길 - 창원 메가시티 자이&위브</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: calc(100vh - 460px); /* 전체 높이에서 푸터 높이 빼기 (푸터가 240px이면) */
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer {
+  margin-top: auto;
+}
+
     body {
       margin: 0;
       font-family: 'Noto Sans KR', sans-serif;
@@ -119,6 +133,10 @@
 </div>
 
   </header>
+<body>
+  <div class="wrapper">
+    <!-- 모든 본문 내용(header, h2, section 등) 여기에 포함 -->
+
 
   <h2 class="headline">오시는길</h2>
 
@@ -136,9 +154,11 @@
 
 
   </section>
-
+  </div>
+  <footer class="site-footer">...</footer>
+</body>
   <footer class="site-footer" style="background-color: #000; color: #fff; position: relative;">
-    <div class="footer-left" style="padding: 2rem 1rem;">
+    <div class="footer-left" style="padding: 2rem 1rem;margin-top: 121px;">
       시행사: 대야구역 재개발정비사업조합<br>
       시공사: <img src="images/const.png" alt="시공사 로고" style="height: 30px; vertical-align: bottom;"> <br>
       온라인 마케팅 대행 : 미쯔씨앤에이<br>
@@ -172,5 +192,9 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+    <div class="wrapper">
+    <!-- 모든 본문 내용(header, h2, section 등) 여기에 포함 -->
+  </div>
+  <footer class="site-footer">...</footer>
 </body>
 </html>
