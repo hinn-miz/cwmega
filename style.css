@@ -151,8 +151,4 @@
     color: #002B45;
   }
 }
-@media (max-width: 450px){
-    body {
-    margin-top: 80px; !important
-  }
-}
+
